@@ -1,0 +1,22 @@
+{
+  "name": "d11cloud",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker for d11cloud.com",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "build": "wrangler deploy --dry-run"
+  },
+  "keywords": [
+    "cloudflare-workers"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250102.0",
+    "wrangler": "^3.78.0",
+    "typescript": "^5.3.3"
+  }
+}

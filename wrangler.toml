@@ -1,0 +1,7 @@
+name = "d11cloud"
+main = "src/index.ts"
+compatibility_date = "2025-03-18"
+compatibility_flags = ["nodejs_compat"]
+
+# Asset serving for both development and production
+assets = { directory = "public" }
