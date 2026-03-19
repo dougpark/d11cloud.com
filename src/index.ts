@@ -20,37 +20,19 @@ export default {
 
         // Serve static files from public/ directory
         if (env.ASSETS) {
+            // For root path /, try to serve index.html
+            if (pathname === '/') {
+                const indexResponse = await env.ASSETS.fetch(new Request(new URL('/index.html', request.url).toString()));
+                if (indexResponse.status === 200) {
+                    return indexResponse;
+                }
+            }
+
+            // Try to serve the requested file
             const response = await env.ASSETS.fetch(request);
             if (response.status !== 404) {
                 return response;
             }
-        }
-
-        // Serve homepage
-        if (pathname === '/' || pathname === '/index.html') {
-            return new Response(`
-<!DOCTYPE html>
-<html>
-<head>
-  <title>d11cloud.com</title>
-  <link rel="stylesheet" href="/styles.css">
-</head>
-<body>
-  <h1>Hello from Cloudflare Workers!</h1>
-  <p>Current time: <span id="time"></span></p>
-  <button onclick="fetchTime()">Get Server Time</button>
-  <script>
-    async function fetchTime() {
-      const response = await fetch('/api/time');
-      const data = await response.json();
-      document.getElementById('time').textContent = data.serverTime;
-    }
-  </script>
-</body>
-</html>
-      `, {
-                headers: { 'Content-Type': 'text/html' }
-            });
         }
 
         // 404 Not Found
