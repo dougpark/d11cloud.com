@@ -28,6 +28,29 @@ export default {
                 }
             }
 
+            // Handle /blog and any sub-paths/assets
+            if (pathname.startsWith('/blog')) {
+                // Try to serve the exact file/folder first
+                let response = await env.ASSETS.fetch(request);
+                if (response.status === 200) {
+                    return response;
+                }
+
+                // If it's a 404, try serving index.html for directory-like paths
+                if (response.status === 404 && !pathname.includes('.')) {
+                    const indexResponse = await env.ASSETS.fetch(
+                        new Request(new URL(pathname.endsWith('/') ? pathname + 'index.html' : pathname + '/index.html', request.url).toString())
+                    );
+                    if (indexResponse.status === 200) {
+                        return indexResponse;
+                    }
+                }
+                // If nothing found in /blog, return 404 for blog paths
+                if (response.status === 404) {
+                    return response;
+                }
+            }
+
             // Try to serve the requested file
             const response = await env.ASSETS.fetch(request);
             if (response.status !== 404) {
