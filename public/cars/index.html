@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Daily journal – thoughts, progress, and reflections." />
+    <title>Daily Journal</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23f47b20'/><text y='24' x='4' font-size='22' font-family='monospace' fill='%23111'>d</text></svg>" />
+    <style>
+        .journal-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .journal-entry {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            border-left: 4px solid var(--orange);
+            background: rgba(244, 123, 32, 0.05);
+            border-radius: 4px;
+        }
+
+        .journal-entry-date {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--orange);
+            margin-bottom: 0.5rem;
+            font-family: monospace;
+        }
+
+        .journal-entry-content {
+            line-height: 1.6;
+            color: var(--text-secondary, #666);
+        }
+
+        .journal-entry-content p {
+            margin: 0.5rem 0;
+        }
+
+        .journal-entry-content p:first-child {
+            margin-top: 0;
+        }
+
+        .journal-entry-content p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── Header ────────────────────────────────────────────────── -->
+    <header>
+        <div class="nav">
+            <a href="/" class="logo" aria-label="d11cloud home">
+                <!-- Cloud icon -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" aria-hidden="true" style="color:var(--orange)">
+                    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+                </svg>
+                d11<span>cloud</span>.com
+            </a>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/cars">Cars</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ── Journal ────────────────────────────────────────────────── -->
+    <section class="journal-container" aria-label="Daily journal">
+        <h1>Daily Journal</h1>
+        <p style="color: var(--text-secondary, #666); margin-bottom: 2rem;">Thoughts, progress, and reflections.</p>
+
+        <!-- JOURNAL ENTRIES START -->
+
+        <!-- Daily entry template - copy this section and update the date and content -->
+        <article class="journal-entry" data-date="2026-03-21">
+            <div class="journal-entry-date">2026-03-21</div>
+            <div class="journal-entry-content">
+                <p>Started working on the blog infrastructure. Set up the server to properly serve all pages and assets
+                    from the /blog folder.</p>
+                <p>Created a journal.html file that can be easily updated with daily entries. Planning to write an
+                    automated script that will insert new dated sections.</p>
+            </div>
+        </article>
+
+        <!-- Daily entry template - copy from here -->
+        <article class="journal-entry" data-date="YYYY-MM-DD">
+            <div class="journal-entry-date">YYYY-MM-DD</div>
+            <div class="journal-entry-content">
+                <p>Entry text goes here. Add multiple paragraphs as needed.</p>
+            </div>
+        </article>
+        <!-- to here for new entries -->
+
+    </section>
+
+    <!-- ── Footer ─────────────────────────────────────────────────── -->
+    <footer>
+        <p>
+            &copy; <span id="year"></span> d11cloud.com &nbsp;&middot;&nbsp;
+            <a href="mailto:hello@d11cloud.com">hello@d11cloud.com</a>
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+
+</html>
